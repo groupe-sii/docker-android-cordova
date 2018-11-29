@@ -14,9 +14,10 @@ RUN ls
 RUN yes | ./sdkmanager --licenses || true
 RUN ./sdkmanager "build-tools;26.0.2" "platform-tools" "platforms;android-24"
 RUN ./sdkmanager --list
-RUN export ANDROID_HOME=/opt/android
-RUN export PATH=$PATH:/opt/android/tools/bin:/opt/android/platform-tools:/opt/android/build-tools/bin
+ENV ANDROID_HOME=/opt/android
+ENV PATH=$PATH:/opt/android/tools/bin:/opt/android/platform-tools:/opt/android/build-tools/bin
 RUN wget -P /tmp https://services.gradle.org/distributions/gradle-4.7-bin.zip
 RUN mkdir -p /opt/gradle && pwd && unzip -d /opt/gradle /tmp/gradle-4.7-bin.zip
-RUN export PATH=$PATH:/opt/gradle/gradle-4.7/bin
+ENV PATH=$PATH:/opt/gradle/gradle-4.7/bin
 RUN npm install -g cordova
+WORKDIR /root
