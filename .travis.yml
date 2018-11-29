@@ -6,7 +6,4 @@ services:
   - docker
 
 script:
-- docker build -t android-cordova:0.0.1 .
-- docker tag android-cordova:0.0.1 grouepsii/android-cordova:0.0.1
-- echo "$DOCKER_HUB_PASS" | docker login -u $DOCKER_HUB_LOGIN --password-stdin
-- docker push groupesii/android-cordova:0.0.1
+- docker build -t groupesii/android-cordova:0.0.1 .
